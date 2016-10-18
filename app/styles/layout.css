@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+header {
+    height: 40px;
+    background: #80a89c;
+}
+section {
+    width: 1200px;
+    min-height: 500px;
+    margin: 80px auto;
+}
+.v-ct-top {
+    height: 400px;
+}
+.v-ct-player {
+    float: left;
+    width: 640px;
+    height: 400px;
+    font-size: 0;
+}
+#v-canvas {
+    width: 640px;
+    height: 360px;
+    background: #333;
+}
+.v-player-controls {
+    height: 40px;
+    background: #80a89c;
+}
+.v-ct-panel {
+    float: left;
+    width: 560px;
+    height: 400px;
+    background: #f9f9f9;
+}
+.v-ct-bottom {
+    margin: 10px 0 0 0;
+    height: 130px;
+}
+.v-ct-track {
+    height: 60px;
+    background: #f5f5f5;
+}
+.v-ct-track:nth-of-type(2) {
+    margin: 10px 0 0 0;
+}
+.v-icon-block {
+    width: 60px;
+    height: 60px;
+    background: #333;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
