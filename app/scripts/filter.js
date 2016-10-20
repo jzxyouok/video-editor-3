@@ -29,4 +29,25 @@ Filter.grey = function (imageData) {
         data[i + 2] = res;
     }
     return imageData;
-}
+};
+
+// 极化
+Filter.blackAndWhite = function (imageData) {
+    var i = 0,
+        data = imageData.data,
+        len = data.length,
+        avg = 0;
+    for (i = 0; i < len; i += 4) {
+        avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        if (avg >= 100) {
+            data[i] = 255;
+            data[i + 1] = 255;
+            data[i + 2] = 255;
+        } else {
+            data[i] = 0;
+            data[i + 1] = 0;
+            data[i + 2] = 0;
+        }
+    }
+    return imageData;
+};

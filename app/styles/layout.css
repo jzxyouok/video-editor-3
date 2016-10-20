@@ -33,6 +33,9 @@ section {
     z-index: 1;
 }
 .v-player-controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     height: 40px;
     background: #80a89c;
 }
