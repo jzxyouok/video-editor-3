@@ -5,7 +5,9 @@ var Player = function () {
 window.onload = function () {
     var fps = 60;
     var video = document.querySelector('video');
-    var canvas = document.querySelector('canvas');
+    var canvasOrigin = document.querySelector('#v-canvas-origin');
+    var canvas = document.querySelector('#v-canvas');
+    var ctxOrigin = canvasOrigin.getContext('2d');
     var ctx = canvas.getContext('2d');
 
     video.addEventListener('play', function () {
@@ -23,6 +25,11 @@ window.onload = function () {
         if (video.paused) {
             return;
         }
-        ctx.drawImage(video, 0, 0, 640, 360);
+        ctxOrigin.drawImage(video, 0, 0, 640, 360);
+        var imgData = ctxOrigin.getImageData(0, 0, 640, 360);
+        // ctx.putImageData(Filter.grey(imgData), 0, 0);
+        ctx.putImageData(Filter.negative(imgData), 0, 0);
+        // ctx.putImageData(Filter.grey(imgData), 0, 0);
+        // ctx.putImageData(Filter.grey(imgData), 0, 0);
     }, 1000 / fps);
 };

@@ -16,14 +16,21 @@ section {
 }
 .v-ct-player {
     float: left;
+    position: relative;
     width: 640px;
     height: 400px;
     font-size: 0;
 }
+#v-canvas-origin {
+    position: absolute;
+    background: none;
+    opacity: 0;
+}
 #v-canvas {
-    width: 640px;
-    height: 360px;
+    position: absolute;
+    left: 0;
     background: #333;
+    z-index: 1;
 }
 .v-player-controls {
     height: 40px;
