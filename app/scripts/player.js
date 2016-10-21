@@ -28,7 +28,11 @@ window.onload = function () {
         ctxOrigin.drawImage(video, 0, 0, 640, 360);
         var imgData = ctxOrigin.getImageData(0, 0, 640, 360);
         ctx.putImageData(Filter.grey(imgData), 0, 0);
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 36px serif';
         // ctx.putImageData(Filter.negative(imgData), 0, 0);
+        ctx.fillText(new Date().toLocaleString(), 100, 100);
+        ctx.fillText(new Date().toLocaleString(), 100, 200);
         // ctx.putImageData(Filter.blackAndWhite(imgData), 0, 0);
         // ctx.putImageData(Filter.grey(imgData), 0, 0);
     }, 1000 / fps);

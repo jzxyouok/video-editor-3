@@ -51,15 +51,15 @@ section {
 }
 .v-ct-track {
     height: 60px;
-    background: #f5f5f5;
+    background: #eee;
 }
 .v-ct-track:nth-of-type(2) {
     margin: 10px 0 0 0;
 }
-.v-icon-block {
+.v-track-icon {
     width: 60px;
     height: 60px;
-    background: #333;
+    background: #80a89c;
 }
 footer {
     position: absolute;
