@@ -51,3 +51,36 @@ Filter.blackAndWhite = function (imageData) {
     }
     return imageData;
 };
+
+Filter.lomo = function (imageData) {
+    var i = 0,
+        data = imageData.data,
+        len = data.length,
+        r = 0,
+        g = 0,
+        b = 0;
+    var modeSmoothLight = function (basePixel, mixPixel) {
+        var res = 0;
+        res = mixPixel > 128 ? ((basePixel + (mixPixel * 2 - 255) * ((Math.sqrt(basePixel / 255)) * 255 - basePixel) / 255)) :
+          ((basePixel + (mixPixel + mixPixel - 255) * (basePixel - basePixel * basePixel / 255) / 255));
+        return Math.min(255, Math.max(0, res));
+    };
+    var modeExclude = function (basePixel, mixPixel) {
+        var res = 0;
+        res = (mixPixel + basePixel) - mixPixel * basePixel / 128;
+        return Math.min(255, Math.max(0, res));
+    };
+    for (i = 0; i < len; i += 4) {
+        b = modeSmoothLight(data[i], data[i]);
+        g = modeSmoothLight(data[i + 1], data[i + 1]);
+        r = modeSmoothLight(data[i + 2], data[i + 2]);
+        b = modeExclude(b, 80);
+        g = modeExclude(g, 15);
+        r = modeExclude(r, 5);
+        data[i] = b;
+        data[i + 1] = g;
+        data[i + 2] = r;
+        data[i + 3] = 255;
+    }
+    return imageData;
+};

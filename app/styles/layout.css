@@ -22,13 +22,13 @@ section {
     font-size: 0;
 }
 #v-canvas-origin {
-    position: absolute;
-    background: none;
-    opacity: 0;
+    /*position: absolute;*/
+    /*background: none;*/
+    /*opacity: 0;*/
 }
 #v-canvas {
-    position: absolute;
-    left: 0;
+    /*position: absolute;*/
+    /*left: 0;*/
     background: #333;
     z-index: 1;
 }
