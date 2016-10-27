@@ -25,20 +25,70 @@ var Player = function () {
 };
 
 (function (player) {
+    // 默认设置
+    var defaultSettings = {
+        video: null,
+        audio: null,
+        videoList: [],
+        audioList: [],
+        canplayVideo: false,
+        canplayAudio: false,
+        autoplay: false,
+        duration: 0,
+        currentTime: 0,
+        volume: 75,
+        mute: false
+    };
+
+    /**
+     * 初始化播放器参数
+     * @param  {Object} config 配置参数
+     */
+    player.init = function (config) {
+        var self = this;
+        Object.keys(config).forEach(function (key) {
+            if (self.hasOwnProperty(key)) {
+                self[key] = config[key] || defaultSettings[key];
+            }
+        });
+    };
     /**
      * 创建播放器对象
      */
-    player.create = function () {
-        var video = document.createElement('video'),
+    player.create = function (config) {
+        var video = null, audio = null;
+        this.init(config);
+        if (this.videoList.length > 0) {
+            video = document.createElement('video');
+            video.src = this.videoList[0];
+            this.video = video;
+        }
+        if (this.audioList.length > 0) {
             audio = document.createElement('audio');
-
+            audio.src = this.audioList[0];
+            this.audio = audio;
+        }
+        
     };
+    /**
+     * 播放
+     */
     player.play = function () {
-
+        if (this.canplayVideo && this.canplayAudio) {
+            this.video.play();
+            this.audio.play();
+        }
+    };
+    /**
+     * 暂停
+     */
+    player.pause = function () {
+        this.video.pause();
+        this.audio.pause();
     };
 }(Player.prototype));
 
-
+new Player().play();
 
 
 
@@ -46,51 +96,33 @@ var Player = function () {
 
 
 window.onload = function () {
-    // var fps = 60;
+    var fps = 60;
     var video = document.querySelector('video');
-    // var canvasOrigin = document.querySelector('#v-canvas-origin');
-    // var canvas = document.querySelector('#v-canvas');
-    // var ctxOrigin = canvasOrigin.getContext('2d');
-    // var ctx = canvas.getContext('2d');
-
-    // video.addEventListener('play', function () {
-    //     var videoWidth = video.videoWidth;
-    //     var videoHeight = video.videoHeight;
-    //     video.videoWidth = 640;
-    //     video.videoHeight = 640 / videoWidth * videoHeight;
-    // });
-
-    video.addEventListener('canplaythrough', function () {
-        console.log('can play');
-    });
-
-    video.addEventListener('canplay', function () {
-        console.log('can play ....');
-    });
+    var canvasOrigin = document.querySelector('#v-canvas-origin');
+    var canvas = document.querySelector('#v-canvas');
+    var ctxOrigin = canvasOrigin.getContext('2d');
+    var ctx = canvas.getContext('2d');
 
     video.addEventListener('play', function () {
-        if (video.readyState > 3) {
-            console.log('.........');
-        }
-        console.log(video.readyState);
-    });
-    video.addEventListener('timeupdate', function () {
-        console.log(video.readyState);
+        var videoWidth = video.videoWidth;
+        var videoHeight = video.videoHeight;
+        video.videoWidth = 640;
+        video.videoHeight = 640 / videoWidth * videoHeight;
     });
 
-    // var timer = setInterval(function () {
-    //     if (video.paused) {
-    //         return;
-    //     }
-    //     ctxOrigin.drawImage(video, 0, 0, 640, 360);
-    //     var imgData = ctxOrigin.getImageData(0, 0, 640, 360);
-    //     // ctx.putImageData(Filter.grey(imgData), 0, 0);
-    //     ctx.fillStyle = '#fff';
-    //     ctx.font = 'bold 36px serif';
-        // ctx.putImageData(Filter.negative(imgData), 0, 0);
-        // ctx.fillText(new Date().toLocaleString(), 100, 100);
-        // ctx.fillText(new Date().toLocaleString(), 100, 200);
-        // ctx.putImageData(Filter.blackAndWhite(imgData), 0, 0);
-    //     ctx.putImageData(Filter.lomo(imgData), 0, 0);
-    // }, 1000 / fps);
+    // video.addEventListener('timeupdate', function () {
+    //     console.log(video.readyState);
+    // });
+
+    var timer = setInterval(function () {
+        if (video.paused) {
+            return;
+        }
+        ctxOrigin.drawImage(video, 0, 0, 640, 360);
+        var imgData = ctxOrigin.getImageData(0, 0, 640, 360);
+        ctx.putImageData(Filter.grey(imgData), 0, 0);
+        ctx.fillStyle = 'red';
+        ctx.font = 'bold 16px microsoft yahei';
+        ctx.fillText(new Date().toLocaleString(), 10, 100);
+    }, 1000 / fps);
 };
