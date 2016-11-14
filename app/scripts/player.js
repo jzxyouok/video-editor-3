@@ -8,20 +8,24 @@ var Player = function () {
     // 音频资源列表
     this.audioList = [];
 
-    // 能否播放视频
-    this.canplayVideo = false;
-    // 能否播放音频
-    this.canplayAudio = false;
-    // 是否自动播放
-    this.autoplay = false;
     // 播放器时长
     this.duration = 0;
     // 播放器当前时间
     this.currentTime = 0;
     // 播放器默认音量(max: 100)
     this.volume = 75;
+
+    // 能否播放视频
+    this.canplayVideo = false;
+    // 能否播放音频
+    this.canplayAudio = false;
+
+    // 是否自动播放
+    this.autoplay = false;
     // 是否开启静音
     this.mute = false;
+    // 是否循环播放
+    this.loop = false;
 };
 
 (function (player) {
@@ -31,13 +35,14 @@ var Player = function () {
         audio: null,
         videoList: [],
         audioList: [],
-        canplayVideo: false,
-        canplayAudio: false,
-        autoplay: false,
         duration: 0,
         currentTime: 0,
         volume: 75,
-        mute: false
+        canplayVideo: false,
+        canplayAudio: false,
+        autoplay: false,
+        mute: false,
+        loop: false
     };
 
     /**
@@ -58,17 +63,22 @@ var Player = function () {
     player.create = function (config) {
         var video = null, audio = null;
         this.init(config);
+        // 创建视频播放器
         if (this.videoList.length > 0) {
             video = document.createElement('video');
             video.src = this.videoList[0];
+            this.loop ? video.setAttribute('loop', true) : '';
+            this.autoplay ? video.setAttribute('autoplay', true) : '';
             this.video = video;
         }
+        // 创建音频播放器
         if (this.audioList.length > 0) {
             audio = document.createElement('audio');
             audio.src = this.audioList[0];
+            this.loop ? audio.setAttribute('loop', true) : '';
+            this.autoplay ? audio.setAttribute('autoplay', true) : '';
             this.audio = audio;
         }
-        
     };
     /**
      * 播放
@@ -120,9 +130,10 @@ window.onload = function () {
         }
         ctxOrigin.drawImage(video, 0, 0, 640, 360);
         var imgData = ctxOrigin.getImageData(0, 0, 640, 360);
-        ctx.putImageData(Filter.grey(imgData), 0, 0);
-        ctx.fillStyle = 'red';
-        ctx.font = 'bold 16px microsoft yahei';
-        ctx.fillText(new Date().toLocaleString(), 10, 100);
+        // ctx.putImageData(Filter.grey(imgData), 0, 0);
+        ctx.putImageData(imgData, 0, 0);
+        // ctx.fillStyle = 'red';
+        // ctx.font = 'bold 16px microsoft yahei';
+        // ctx.fillText(new Date().toLocaleString(), 10, 100);
     }, 1000 / fps);
 };

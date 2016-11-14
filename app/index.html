@@ -5,11 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>VIDEO | EDITOR</title>
 <link rel="stylesheet" href="./styles/layout.css">
-<script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
-<script src="./scripts/ng-editor/controller.js"></script>
-<script src="./scripts/ng-editor/service.js"></script>
-<script src="./scripts/ng-editor/directive.js"></script>
-<script src="./scripts/ng-editor/filter.js"></script>
 <svg xmlns="http://www.w3.org/2333/svg" display="none">
     <defs>
         <style type="text/css">  
@@ -120,11 +115,11 @@
 </svg>
 </head>
 <body>
-    <header ng-controller="headerCtrl"></header>
-    <section ng-controller="editorCtrl">
+    <header></header>
+    <section>
         <div class="v-ct-top">
             <div class="v-ct-player">
-                <video src="./source/videos/ty.mp4" width="0" height="0" autoplay></video>
+                <video src="./source/videos/cangying-1min.mp4" width="0" height="0" autoplay></video>
                 <canvas id="v-canvas-origin" width="640" height="360"></canvas>
                 <canvas id="v-canvas" width="640" height="360"></canvas>
                 <div class="v-player-controls">
@@ -161,7 +156,7 @@
             </div>
         </div>
     </section>
-    <footer ng-controller="footerCtrl"></footer>
+    <footer></footer>
     <script src="./scripts/effect.filter.js"></script>
     <script src="./scripts/player.js"></script>
 </body>
