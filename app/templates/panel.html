@@ -1,0 +1,58 @@
+<div class="v-ct-panel">
+    <ul>
+        <li (click)="switchTab(1)" [ngClass]="tabIndex === 1 ? 'tab-active' : ''">
+            <svg width="20" height="20">
+                <use xlink:href="#video"></use>
+            </svg>
+        </li>
+        <li (click)="switchTab(2)" [ngClass]="tabIndex === 2 ? 'tab-active' : ''">
+            <svg width="20" height="20">
+                <use xlink:href="#image"></use>
+            </svg>
+        </li>
+        <li (click)="switchTab(3)" [ngClass]="tabIndex === 3 ? 'tab-active' : ''">
+            <svg width="20" height="20">
+                <use xlink:href="#audio"></use>
+            </svg>
+        </li>
+        <li (click)="switchTab(4)" [ngClass]="tabIndex === 4 ? 'tab-active' : ''">
+            <svg width="20" height="20">
+                <use xlink:href="#transition"></use>
+            </svg>
+        </li>
+        <li (click)="switchTab(5)" [ngClass]="tabIndex === 5 ? 'tab-active' : ''">
+            <svg width="20" height="20">
+                <use xlink:href="#text"></use>
+            </svg>
+        </li>
+    </ul>
+
+    <div class="v-ct-list" *ngIf="tabIndex === 1">
+        <div class="v-ct-item" drag [data]="item" *ngFor="let item of list">
+            <img src="{{item.preview}}">
+            <p class="v-ct-title">{{item.title}}</p>
+            <p class="v-ct-time">{{item.duration | secondFormat}}</p>
+        </div>
+    </div>
+
+    <div class="v-ct-list" *ngIf="tabIndex === 2">
+        <div class="v-ct-item" drag [data]="item" *ngFor="let item of list">
+            <img src="{{item.preview}}">
+            <p class="v-ct-title">{{item.title}}</p>
+        </div>
+    </div>
+
+    <div class="v-ct-list" *ngIf="tabIndex === 3">
+        <div class="v-ct-audio-item" drag [data]="item" *ngFor="let item of list">
+            <svg width="14" height="14">
+                <use xlink:href="#play-audio"></use>
+            </svg>
+            <span>{{item.title}}</span>
+            <span>{{item.duration | secondFormat}}</span>
+        </div>
+    </div>
+
+    <div class="v-ct-list" *ngIf="tabIndex === 4">过渡</div>
+
+    <div class="v-ct-list" *ngIf="tabIndex === 5">文字</div>
+</div>

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Kalimba",
+        "extension": "mp3",
+        "url": "source/audios/Kalimba.mp3",
+        "duration": 348
+    },
+    {
+        "id": 2,
+        "title": "Maid with the Flaxen Hair",
+        "extension": "mp3",
+        "url": "source/audios/Maid with the Flaxen Hair.mp3",
+        "duration": 169
+    },
+    {
+        "id": 3,
+        "title": "Sleep Away",
+        "extension": "mp3",
+        "url": "source/audios/Sleep Away.mp3",
+        "duration": 200
+    }
+]

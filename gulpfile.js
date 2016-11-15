@@ -26,7 +26,7 @@ gulp.task('installTypings', function () {
 });
 
 gulp.task('typescript', function () {
-    return gulp.src('src/**/*.ts')
+    return gulp.src('app/src/**/*.ts')
         .pipe(typescript(tsConfig))
         .pipe(gulp.dest('app/build'));
 });
@@ -34,8 +34,14 @@ gulp.task('typescript', function () {
 gulp.task('default', ['typescript'], function () {
     bs.init({
         server: {
-            baseDir:  './app'
+            baseDir:  './',
+            index: './app/index.html'
         }
     });
-    gulp.watch('app/**').on('change', bs.reload);
+    gulp.watch('app/index.html', bs.reload);
+    gulp.watch('app/src/**/*.ts', ['typescript', bs.reload]);
+    gulp.watch('app/scripts/**', bs.reload);
+    gulp.watch('app/styles/**', bs.reload);
+    gulp.watch('app/templates/**', bs.reload);
+    gulp.watch('app/source/**', bs.reload);
 });
