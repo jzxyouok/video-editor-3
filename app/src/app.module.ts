@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {secondFormat} from './app.pipe';
 
 import {Drag} from './drag';
+import {DragItem} from './drag-item';
 
 import {AppComponent}   from './app.component';
 import {Player} from './app.player';
@@ -16,6 +17,7 @@ import {Panel} from './app.panel';
         secondFormat,
 
         Drag,
+        DragItem,
 
         AppComponent,
         Player,

@@ -1,13 +1,15 @@
-import {Component, Input} from '@angular/core';
-
+import {Component, Injectable, ElementRef, Input, Output} from '@angular/core';
 @Component({
-    selector: 'drag',
+    selector: 'drag-item',
     template: `<div class="v-ct-item"
                     *ngIf="type==='video'"
                     (mouseover)="mouseover()"
                     (mousedown)="mousedown()"
                     (mousemove)="mousemove()"
-                    (mouseup)="mouseup()">
+                    (mouseup)="mouseup()"
+                    drag
+                    [dataTransfer]="data"
+                    [activeType]="type">
                     <img src="{{data.preview}}">
                     <p class="v-ct-title">{{data.title}}</p>
                     <p class="v-ct-time">{{data.duration | secondFormat}}</p>
@@ -17,7 +19,10 @@ import {Component, Input} from '@angular/core';
                     (mouseover)="mouseover()"
                     (mousedown)="mousedown()"
                     (mousemove)="mousemove()"
-                    (mouseup)="mouseup()">
+                    (mouseup)="mouseup()"
+                    drag
+                    [dataTransfer]="data"
+                    [activeType]="type">
                     <img src="{{data.preview}}">
                     <p class="v-ct-title">{{data.title}}</p>
                 </div>
@@ -26,7 +31,10 @@ import {Component, Input} from '@angular/core';
                     (mouseover)="mouseover()"
                     (mousedown)="mousedown()"
                     (mousemove)="mousemove()"
-                    (mouseup)="mouseup()">
+                    (mouseup)="mouseup()"
+                    drag
+                    [dataTransfer]="data"
+                    [activeType]="type">
                     <svg width="14" height="14">
                         <use xlink:href="#play-audio"></use>
                     </svg>
@@ -34,22 +42,36 @@ import {Component, Input} from '@angular/core';
                     <span>{{data.duration | secondFormat}}</span>
                 </div>`
 })
-export class Drag {
+@Injectable()
+export class DragItem{
+    el: HTMLElement;
+    // 指令元素
+    constructor(elref: ElementRef) {
+        this.el = elref.nativeElement;
+    };
+
+    // 组件输入数据
     @Input()
-    activeType: string;
+    data: {};
     @Input()
+    type: string;
+
+    @Output()
     dataTransfer: {};
+    @Output()
+    activeType: string;
 
     mouseover() {
-        console.log('over');
+        this.el.style.cursor = 'move';
     };
     mousedown() {
-
+        this.dataTransfer = this.data;
     };
     mousemove() {
-        console.log(this.dataTransfer);
+        this.activeType = this.type;
     };
     mouseup() {
-
+        this.dataTransfer = {};
+        this.activeType = '';
     };
 };

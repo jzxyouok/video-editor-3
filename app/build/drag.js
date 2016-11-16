@@ -10,19 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Drag = (function () {
-    // 指令元素
-    function Drag(elref) {
-        this.el = elref.nativeElement;
+    function Drag() {
     }
-    ;
     Drag.prototype.mouseover = function () {
-        this.el.style.cursor = 'move';
+        console.log('over');
     };
     ;
     Drag.prototype.mousedown = function () {
     };
     ;
     Drag.prototype.mousemove = function () {
+        console.log(this.dataTransfer);
     };
     ;
     Drag.prototype.mouseup = function () {
@@ -30,19 +28,18 @@ var Drag = (function () {
     ;
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
-    ], Drag.prototype, "data", void 0);
+        __metadata('design:type', String)
+    ], Drag.prototype, "activeType", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', String)
-    ], Drag.prototype, "type", void 0);
+        __metadata('design:type', Object)
+    ], Drag.prototype, "dataTransfer", void 0);
     Drag = __decorate([
         core_1.Component({
-            selector: 'drag-item',
+            selector: 'drag',
             template: "<div class=\"v-ct-item\"\n                    *ngIf=\"type==='video'\"\n                    (mouseover)=\"mouseover()\"\n                    (mousedown)=\"mousedown()\"\n                    (mousemove)=\"mousemove()\"\n                    (mouseup)=\"mouseup()\">\n                    <img src=\"{{data.preview}}\">\n                    <p class=\"v-ct-title\">{{data.title}}</p>\n                    <p class=\"v-ct-time\">{{data.duration | secondFormat}}</p>\n                </div>\n                <div class=\"v-ct-item\"\n                    *ngIf=\"type==='image'\"\n                    (mouseover)=\"mouseover()\"\n                    (mousedown)=\"mousedown()\"\n                    (mousemove)=\"mousemove()\"\n                    (mouseup)=\"mouseup()\">\n                    <img src=\"{{data.preview}}\">\n                    <p class=\"v-ct-title\">{{data.title}}</p>\n                </div>\n                <div class=\"v-ct-audio-item\"\n                    *ngIf=\"type==='audio'\"\n                    (mouseover)=\"mouseover()\"\n                    (mousedown)=\"mousedown()\"\n                    (mousemove)=\"mousemove()\"\n                    (mouseup)=\"mouseup()\">\n                    <svg width=\"14\" height=\"14\">\n                        <use xlink:href=\"#play-audio\"></use>\n                    </svg>\n                    <span>{{data.title}}</span>\n                    <span>{{data.duration | secondFormat}}</span>\n                </div>"
-        }),
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
+        }), 
+        __metadata('design:paramtypes', [])
     ], Drag);
     return Drag;
 }());

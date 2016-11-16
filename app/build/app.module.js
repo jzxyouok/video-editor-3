@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var app_pipe_1 = require('./app.pipe');
 var drag_1 = require('./drag');
+var drag_item_1 = require('./drag-item');
 var app_component_1 = require('./app.component');
 var app_player_1 = require('./app.player');
 var app_panel_1 = require('./app.panel');
@@ -25,6 +26,7 @@ var AppModule = (function () {
             declarations: [
                 app_pipe_1.secondFormat,
                 drag_1.Drag,
+                drag_item_1.DragItem,
                 app_component_1.AppComponent,
                 app_player_1.Player,
                 app_panel_1.Panel
