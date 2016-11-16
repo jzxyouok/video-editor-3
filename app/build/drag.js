@@ -11,24 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var Drag = (function () {
     // 指令元素
-    function Drag(elref, render) {
+    function Drag(elref) {
         this.el = elref.nativeElement;
-        this.render = render;
     }
     ;
-    // 鼠标悬浮事件
-    Drag.prototype.onmouseover = function () {
+    Drag.prototype.mouseover = function () {
         this.el.style.cursor = 'move';
     };
     ;
-    // 鼠标按下事件
-    Drag.prototype.onmousedown = function () {
-        var em = this.render.createElement('body', 'dragger');
-        console.log(em);
+    Drag.prototype.mousedown = function () {
     };
     ;
-    // 鼠标移动事件
-    Drag.prototype.onmousemove = function () {
+    Drag.prototype.mousemove = function () {
+    };
+    ;
+    Drag.prototype.mouseup = function () {
     };
     ;
     __decorate([
@@ -36,30 +33,18 @@ var Drag = (function () {
         __metadata('design:type', Object)
     ], Drag.prototype, "data", void 0);
     __decorate([
-        core_1.HostListener('mouseover'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], Drag.prototype, "onmouseover", null);
-    __decorate([
-        core_1.HostListener('mousedown'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], Drag.prototype, "onmousedown", null);
-    __decorate([
-        core_1.HostListener('mousemove'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], Drag.prototype, "onmousemove", null);
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], Drag.prototype, "type", void 0);
     Drag = __decorate([
-        core_1.Directive({
-            selector: '[drag]'
+        core_1.Component({
+            selector: 'drag-item',
+            template: "<div class=\"v-ct-item\"\n                    *ngIf=\"type==='video'\"\n                    (mouseover)=\"mouseover()\"\n                    (mousedown)=\"mousedown()\"\n                    (mousemove)=\"mousemove()\"\n                    (mouseup)=\"mouseup()\">\n                    <img src=\"{{data.preview}}\">\n                    <p class=\"v-ct-title\">{{data.title}}</p>\n                    <p class=\"v-ct-time\">{{data.duration | secondFormat}}</p>\n                </div>\n                <div class=\"v-ct-item\"\n                    *ngIf=\"type==='image'\"\n                    (mouseover)=\"mouseover()\"\n                    (mousedown)=\"mousedown()\"\n                    (mousemove)=\"mousemove()\"\n                    (mouseup)=\"mouseup()\">\n                    <img src=\"{{data.preview}}\">\n                    <p class=\"v-ct-title\">{{data.title}}</p>\n                </div>\n                <div class=\"v-ct-audio-item\"\n                    *ngIf=\"type==='audio'\"\n                    (mouseover)=\"mouseover()\"\n                    (mousedown)=\"mousedown()\"\n                    (mousemove)=\"mousemove()\"\n                    (mouseup)=\"mouseup()\">\n                    <svg width=\"14\" height=\"14\">\n                        <use xlink:href=\"#play-audio\"></use>\n                    </svg>\n                    <span>{{data.title}}</span>\n                    <span>{{data.duration | secondFormat}}</span>\n                </div>"
         }),
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], Drag);
     return Drag;
 }());
 exports.Drag = Drag;
+;

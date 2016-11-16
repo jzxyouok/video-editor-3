@@ -28,28 +28,15 @@
     </ul>
 
     <div class="v-ct-list" *ngIf="tabIndex === 1">
-        <div class="v-ct-item" drag [data]="item" *ngFor="let item of list">
-            <img src="{{item.preview}}">
-            <p class="v-ct-title">{{item.title}}</p>
-            <p class="v-ct-time">{{item.duration | secondFormat}}</p>
-        </div>
+        <drag-item *ngFor="let item of list" [data]="item" [type]="'video'"></drag-item>
     </div>
 
     <div class="v-ct-list" *ngIf="tabIndex === 2">
-        <div class="v-ct-item" drag [data]="item" *ngFor="let item of list">
-            <img src="{{item.preview}}">
-            <p class="v-ct-title">{{item.title}}</p>
-        </div>
+        <drag-item *ngFor="let item of list" [data]="item" [type]="'image'"></drag-item>
     </div>
 
     <div class="v-ct-list" *ngIf="tabIndex === 3">
-        <div class="v-ct-audio-item" drag [data]="item" *ngFor="let item of list">
-            <svg width="14" height="14">
-                <use xlink:href="#play-audio"></use>
-            </svg>
-            <span>{{item.title}}</span>
-            <span>{{item.duration | secondFormat}}</span>
-        </div>
+        <drag-item *ngFor="let item of list" [data]="item" [type]="'audio'"></drag-item>
     </div>
 
     <div class="v-ct-list" *ngIf="tabIndex === 4">过渡</div>

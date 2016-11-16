@@ -1,36 +1,62 @@
-import {Directive, ElementRef, Input, Output, Injectable, HostListener, Renderer} from '@angular/core';
-@Directive({
-    selector: '[drag]'
+import {Component, Injectable, ElementRef, Input} from '@angular/core';
+@Component({
+    selector: 'drag-item',
+    template: `<div class="v-ct-item"
+                    *ngIf="type==='video'"
+                    (mouseover)="mouseover()"
+                    (mousedown)="mousedown()"
+                    (mousemove)="mousemove()"
+                    (mouseup)="mouseup()">
+                    <img src="{{data.preview}}">
+                    <p class="v-ct-title">{{data.title}}</p>
+                    <p class="v-ct-time">{{data.duration | secondFormat}}</p>
+                </div>
+                <div class="v-ct-item"
+                    *ngIf="type==='image'"
+                    (mouseover)="mouseover()"
+                    (mousedown)="mousedown()"
+                    (mousemove)="mousemove()"
+                    (mouseup)="mouseup()">
+                    <img src="{{data.preview}}">
+                    <p class="v-ct-title">{{data.title}}</p>
+                </div>
+                <div class="v-ct-audio-item"
+                    *ngIf="type==='audio'"
+                    (mouseover)="mouseover()"
+                    (mousedown)="mousedown()"
+                    (mousemove)="mousemove()"
+                    (mouseup)="mouseup()">
+                    <svg width="14" height="14">
+                        <use xlink:href="#play-audio"></use>
+                    </svg>
+                    <span>{{data.title}}</span>
+                    <span>{{data.duration | secondFormat}}</span>
+                </div>`
 })
 @Injectable()
 export class Drag{
-    el: any;
-    render: Renderer;
-
+    el: HTMLElement;
     // 指令元素
-    constructor(elref: ElementRef, render: Renderer) {
+    constructor(elref: ElementRef) {
         this.el = elref.nativeElement;
-        this.render = render;
     };
 
-    // 指令输入数据
+    // 组件输入数据
     @Input()
-    data: {}
+    data: {};
+    @Input()
+    type: string;
 
-    // 鼠标悬浮事件
-    @HostListener('mouseover')
-    onmouseover() {
+    mouseover() {
         this.el.style.cursor = 'move';
     };
-    // 鼠标按下事件
-    @HostListener('mousedown')
-    onmousedown() {
-        var em = this.render.createElement('body', 'dragger');
-        console.log(em);
-    };
-    // 鼠标移动事件
-    @HostListener('mousemove')
-    onmousemove() {
+    mousedown() {
 
     };
-}
+    mousemove() {
+
+    };
+    mouseup() {
+
+    };
+};
