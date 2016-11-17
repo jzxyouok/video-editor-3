@@ -18,6 +18,8 @@ export class Panel {
     // 列表数据
     list = [];
 
+    transfer: {};
+
     getList() {
         this.http.get(this.url)
             .map(resp => resp.json())
@@ -53,5 +55,8 @@ export class Panel {
                 this.tabIndex = 1;
         }
         this.getList();
+    };
+    output(transfer) {
+        this.transfer = transfer;
     };
 };

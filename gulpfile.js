@@ -3,22 +3,7 @@ var bs = require('browser-sync').create();
 var typescript = require('gulp-typescript');
 var gulpTypings = require("gulp-typings");
 
-var tsConfig =  {
-        target: "es5",
-        module: "commonjs",
-        moduleResolution: "node",
-        sourceMap: true,
-        emitDecoratorMetadata: true,
-        experimentalDecorators: true,
-        removeComments: false,
-        noImplicitAny: false,
-        typeRoots: [
-          "../node_modules/@types"
-        ],
-        types: [
-          "core-js"
-        ]
-    };
+var tsConfig =  require('./tsconfig.json');
 
 gulp.task('installTypings', function () {
     return gulp.src("./typings.json")

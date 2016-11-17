@@ -55,6 +55,10 @@ var Panel = (function () {
         this.getList();
     };
     ;
+    Panel.prototype.output = function (transfer) {
+        this.transfer = transfer;
+    };
+    ;
     Panel = __decorate([
         core_1.Component({
             selector: 'panel',

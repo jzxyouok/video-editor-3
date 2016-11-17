@@ -1,28 +1,23 @@
-import {Component, Injectable, ElementRef, Input, Output} from '@angular/core';
+import {Component, Injectable, ElementRef, Input,
+    Output, EventEmitter} from '@angular/core';
 @Component({
     selector: 'drag-item',
-    template: `<div class="v-ct-item"
-                    *ngIf="type==='video'"
+    template: `<div *ngIf="type==='video'"
                     (mouseover)="mouseover()"
                     (mousedown)="mousedown()"
-                    (mousemove)="mousemove()"
-                    (mouseup)="mouseup()"
-                    drag
-                    [dataTransfer]="data"
-                    [activeType]="type">
+                    (mousemove)="mousemove($event)"
+                    (mouseleave)="mouseleave()"
+                    (mouseup)="mouseup()">
                     <img src="{{data.preview}}">
                     <p class="v-ct-title">{{data.title}}</p>
                     <p class="v-ct-time">{{data.duration | secondFormat}}</p>
                 </div>
-                <div class="v-ct-item"
-                    *ngIf="type==='image'"
+                <div *ngIf="type==='image'"
                     (mouseover)="mouseover()"
                     (mousedown)="mousedown()"
-                    (mousemove)="mousemove()"
-                    (mouseup)="mouseup()"
-                    drag
-                    [dataTransfer]="data"
-                    [activeType]="type">
+                    (mousemove)="mousemove($event)"
+                    (mouseleave)="mouseleave()"
+                    (mouseup)="mouseup()">
                     <img src="{{data.preview}}">
                     <p class="v-ct-title">{{data.title}}</p>
                 </div>
@@ -30,11 +25,9 @@ import {Component, Injectable, ElementRef, Input, Output} from '@angular/core';
                     *ngIf="type==='audio'"
                     (mouseover)="mouseover()"
                     (mousedown)="mousedown()"
-                    (mousemove)="mousemove()"
-                    (mouseup)="mouseup()"
-                    drag
-                    [dataTransfer]="data"
-                    [activeType]="type">
+                    (mousemove)="mousemove($event)"
+                    (mouseleave)="mouseleave()"
+                    (mouseup)="mouseup()">
                     <svg width="14" height="14">
                         <use xlink:href="#play-audio"></use>
                     </svg>
@@ -45,6 +38,8 @@ import {Component, Injectable, ElementRef, Input, Output} from '@angular/core';
 @Injectable()
 export class DragItem{
     el: HTMLElement;
+    elInfo = {x: 0, y: 0, w: 0, h: 0};
+    active: boolean;
     // 指令元素
     constructor(elref: ElementRef) {
         this.el = elref.nativeElement;
@@ -57,21 +52,51 @@ export class DragItem{
     type: string;
 
     @Output()
-    dataTransfer: {};
-    @Output()
-    activeType: string;
+    output:EventEmitter<any> = new EventEmitter();
+
+    // 获取元素尺寸和位置
+    getElementSize(el) {
+        return {
+            w: el.offsetWidth,
+            h: el.offsetHeight,
+            x: el.offsetLeft,
+            y: el.offsetTop
+        };
+    };
+
+    getMousePosition(event) {
+        return {
+            mx: event.clientX,
+            my: event.clientY
+        };
+    };
 
     mouseover() {
         this.el.style.cursor = 'move';
     };
     mousedown() {
-        this.dataTransfer = this.data;
+        this.active = true;
+        this.elInfo = this.getElementSize(this.el);
     };
-    mousemove() {
-        this.activeType = this.type;
+    mousemove(e) {
+        var mouse = this.getMousePosition(e);
+        if (this.active) {
+            this.output.emit({
+                type: this.type,
+                data: this.data,
+                x: this.elInfo.x,
+                y: this.elInfo.y,
+                w: this.elInfo.w,
+                h: this.elInfo.h,
+                mx: mouse.mx,
+                my: mouse.my
+            });
+        }
+    };
+    mouseleave() {
+        this.active = false;
     };
     mouseup() {
-        this.dataTransfer = {};
-        this.activeType = '';
+        this.active = false;
     };
 };

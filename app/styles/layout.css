@@ -41,7 +41,7 @@ section {
     background: #333;
 }
 
-
+/*列表样式*/
 .v-ct-panel {
     float: left;
     width: 560px;
@@ -69,6 +69,7 @@ section {
 .v-ct-list {
     padding: 20px;
 }
+/*列表拖动块*/
 .v-ct-item {
     position: relative;
     display: inline-block;
@@ -76,6 +77,9 @@ section {
     height: 70px;
     margin: 0 10px 10px 0;
     overflow: hidden;
+}
+.v-ct-item:nth-of-type(4n) {
+    margin-right: 0;
 }
 .v-ct-title {
     position: relative;
@@ -102,7 +106,7 @@ section {
     position: absolute;
     width: 100%;
 }
-
+/*音频拖动块*/
 .v-ct-audio-item {
     height: 20px;
     margin: 0 0 10px 0;
@@ -123,6 +127,50 @@ section {
     float: right;
 }
 
+.v-drag {
+    position: absolute;
+}
+.v-drag-video {
+    position: relative;
+    width: 120px;
+    height: 70px;
+}
+.v-drag-audio {
+    position: relative;
+}
+.v-drag-video img {
+    position: absolute;
+    width: 100%;
+}
+.v-drag-title {
+    position: relative;
+    margin: 0;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+}
+.v-drag-time {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
+    padding: 0 6px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 2px;
+    background: #000;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+.v-drag-audio {
+    color: #666;
+}
+.v-drag-audio span:nth-of-type(2) {
+    float: right;
+}
+
+/*轨道样式*/
 .v-ct-bottom {
     margin: 10px 0 0 0;
     height: 130px;

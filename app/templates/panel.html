@@ -28,18 +28,33 @@
     </ul>
 
     <div class="v-ct-list" *ngIf="tabIndex === 1">
-        <drag-item *ngFor="let item of list" [data]="item" [type]="'video'"></drag-item>
+        <drag-item class="v-ct-item"
+            *ngFor="let item of list"
+            [data]="item"
+            [type]="'video'"
+            (output)="output($event)">
+        </drag-item>
     </div>
 
     <div class="v-ct-list" *ngIf="tabIndex === 2">
-        <drag-item *ngFor="let item of list" [data]="item" [type]="'image'"></drag-item>
+        <drag-item class="v-ct-item"
+            *ngFor="let item of list"
+            [data]="item"
+            [type]="'image'"
+            (output)="output($event)">
+        </drag-item>
     </div>
 
     <div class="v-ct-list" *ngIf="tabIndex === 3">
-        <drag-item *ngFor="let item of list" [data]="item" [type]="'audio'"></drag-item>
+        <drag-item *ngFor="let item of list"
+            [data]="item"
+            [type]="'audio'"
+            (output)="output($event)">
+        </drag-item>
     </div>
 
     <div class="v-ct-list" *ngIf="tabIndex === 4">过渡</div>
 
     <div class="v-ct-list" *ngIf="tabIndex === 5">文字</div>
 </div>
+<drag class="v-drag" [transfer]="transfer" *ngIf="transfer"></drag>
