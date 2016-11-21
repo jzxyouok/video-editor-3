@@ -40,7 +40,7 @@ export class DragItem{
     el: HTMLElement;
     elInfo = {x: 0, y: 0, w: 0, h: 0};
     active: boolean;
-    // 指令元素
+
     constructor(elref: ElementRef) {
         this.el = elref.nativeElement;
     };
@@ -54,7 +54,11 @@ export class DragItem{
     @Output()
     output:EventEmitter<any> = new EventEmitter();
 
-    // 获取元素尺寸和位置
+    /**
+     * @description 获取元素尺寸和位置
+     * @param  {HTMLElement} el 当前指令对应元素
+     * @return {Object}    元素尺寸和绝对位置
+     */
     getElementSize(el) {
         return {
             w: el.offsetWidth,
@@ -64,6 +68,11 @@ export class DragItem{
         };
     };
 
+    /**
+     * @description 获取鼠标的绝对位置
+     * @param  {Object} event 事件对象
+     * @return {Object}       鼠标位置
+     */
     getMousePosition(event) {
         return {
             mx: event.clientX,
@@ -80,6 +89,7 @@ export class DragItem{
     };
     mousemove(e) {
         var mouse = this.getMousePosition(e);
+        e.preventDefault();
         if (this.active) {
             this.output.emit({
                 type: this.type,

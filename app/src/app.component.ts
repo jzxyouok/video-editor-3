@@ -5,7 +5,6 @@ import {Component} from '@angular/core';
   template: `<header></header>
              <section>
                  <div class="v-ct-top">
-                    <player></player>
                     <panel></panel>
                  </div>
                  <div class="v-ct-bottom">
@@ -20,3 +19,4 @@ import {Component} from '@angular/core';
              <footer></footer>`
 })
 export class AppComponent {}
+// <player></player>

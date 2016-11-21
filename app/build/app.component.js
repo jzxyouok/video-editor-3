@@ -15,10 +15,11 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'video-editor',
-            template: "<header></header>\n             <section>\n                 <div class=\"v-ct-top\">\n                    <player></player>\n                    <panel></panel>\n                 </div>\n                 <div class=\"v-ct-bottom\">\n                    <div class=\"v-ct-track\">\n                        <div class=\"v-track-icon\"></div>\n                    </div>\n                    <div class=\"v-ct-track\">\n                        <div class=\"v-track-icon\"></div>\n                    </div>\n                 </div>\n             </section>\n             <footer></footer>"
+            template: "<header></header>\n             <section>\n                 <div class=\"v-ct-top\">\n                    <panel></panel>\n                 </div>\n                 <div class=\"v-ct-bottom\">\n                    <div class=\"v-ct-track\">\n                        <div class=\"v-track-icon\"></div>\n                    </div>\n                    <div class=\"v-ct-track\">\n                        <div class=\"v-track-icon\"></div>\n                    </div>\n                 </div>\n             </section>\n             <footer></footer>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
+// <player></player>
