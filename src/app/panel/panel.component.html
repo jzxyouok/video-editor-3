@@ -28,22 +28,37 @@
     </ul>
 
     <section *ngIf="tabIndex === 1">
-        <app-drag-item *ngFor="let item of list"></app-drag-item>
+        <app-drag-item
+            *ngFor="let item of list"
+            [data]="item" [type]="'video'">
+        </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 2">
-        <app-drag-item *ngFor="let item of list"></app-drag-item>
+        <app-drag-item
+            *ngFor="let item of list"
+            [data]="item" [type]="'image'">
+        </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 3">
-        <app-drag-item *ngFor="let item of list"></app-drag-item>
+        <app-drag-item
+            *ngFor="let item of list"
+            [data]="item" [type]="'audio'">
+        </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 4">
-        <app-drag-item *ngFor="let item of list"></app-drag-item>
+        <app-drag-item
+            *ngFor="let item of list"
+            [data]="item" [type]="'transition'">
+        </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 5">
-        <app-drag-item *ngFor="let item of list"></app-drag-item>
+        <app-drag-item
+            *ngFor="let item of list"
+            [data]="item" [type]="'text'">
+        </app-drag-item>
     </section>
 </div>

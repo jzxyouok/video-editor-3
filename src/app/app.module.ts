@@ -11,6 +11,7 @@ import { DragItemComponent } from './drag-item/drag-item.component';
 import { DragMoveItemComponent } from './drag-move-item/drag-move-item.component';
 import { TimeFormatPipe } from './time-format.pipe';
 
+import { PanelDataService } from './panel-data.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { TimeFormatPipe } from './time-format.pipe';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PanelDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
