@@ -1,0 +1,56 @@
+.v-ct-item {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 70px;
+    margin: 0 10px 10px 0;
+    overflow: hidden;
+}
+.v-ct-item:nth-of-type(4n) {
+    margin-right: 0;
+}
+.v-ct-title {
+    position: relative;
+    margin: 0;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+}
+.v-ct-time {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
+    padding: 0 6px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 2px;
+    background: #000;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+.v-ct-item img {
+    position: absolute;
+    width: 100%;
+}
+
+.v-ct-audio-item {
+    height: 20px;
+    margin: 0 0 10px 0;
+    padding: 3px 10px;
+    font-size: 14px;
+    color: #666;
+}
+.v-ct-audio-item:hover {
+    cursor: move;
+    box-shadow: 0 0 3px #aaa;
+}
+.v-ct-audio-item svg,
+.v-ct-audio-item span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.v-ct-audio-item span:nth-of-type(2) {
+    float: right;
+}

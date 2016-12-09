@@ -1,0 +1,49 @@
+<div class="panel">
+    <ul>
+        <li (click)='switchTab(1)' [class]="tabIndex === 1 ? 'tab-active': ''">
+            <svg width="20" height="20">
+                <use xlink:href="#video"></use>
+            </svg>
+        </li>
+        <li (click)='switchTab(2)' [class]="tabIndex === 2 ? 'tab-active': ''">
+            <svg width="20" height="20">
+                <use xlink:href="#image"></use>
+            </svg>
+        </li>
+        <li (click)='switchTab(3)' [class]="tabIndex === 3 ? 'tab-active': ''">
+            <svg width="20" height="20">
+                <use xlink:href="#audio"></use>
+            </svg>
+        </li>
+        <li (click)='switchTab(4)' [class]="tabIndex === 4 ? 'tab-active': ''">
+            <svg width="20" height="20">
+                <use xlink:href="#transition"></use>
+            </svg>
+        </li>
+        <li (click)='switchTab(5)' [class]="tabIndex === 5 ? 'tab-active': ''">
+            <svg width="20" height="20">
+                <use xlink:href="#text"></use>
+            </svg>
+        </li>
+    </ul>
+
+    <section *ngIf="tabIndex === 1">
+        <app-drag-item *ngFor="let item of list"></app-drag-item>
+    </section>
+
+    <section *ngIf="tabIndex === 2">
+        <app-drag-item *ngFor="let item of list"></app-drag-item>
+    </section>
+
+    <section *ngIf="tabIndex === 3">
+        <app-drag-item *ngFor="let item of list"></app-drag-item>
+    </section>
+
+    <section *ngIf="tabIndex === 4">
+        <app-drag-item *ngFor="let item of list"></app-drag-item>
+    </section>
+
+    <section *ngIf="tabIndex === 5">
+        <app-drag-item *ngFor="let item of list"></app-drag-item>
+    </section>
+</div>

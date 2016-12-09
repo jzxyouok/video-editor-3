@@ -1,0 +1,27 @@
+div.panel {
+    float: left;
+    width: 560px;
+    height: 400px;
+    background: #f9f9f9;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0;
+    background: #ccc;
+}
+ul li {
+    display: inline-block;
+    padding: 8px 20px;
+}
+ul li:hover {
+    background: #aaa;
+    cursor: pointer;
+}
+.tab-active {
+    background: #f9f9f9 !important;
+}
+section {
+    padding: 20px;
+}
