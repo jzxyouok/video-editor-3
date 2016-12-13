@@ -6,7 +6,7 @@
     (mouseup)="mouseup()">
     <img src="{{data.preview}}">
     <p class="title">{{data.title}}</p>
-    <p class="time">{{data.duration | timeFormat}}</p>
+    <p class="time">{{data.duration | timeFormat: 'hh:mm:ss'}}</p>
 </div>
 <div *ngIf="type==='image'"
     (mouseover)="mouseover()"
@@ -28,5 +28,5 @@
         <use xlink:href="#play-audio"></use>
     </svg>
     <span>{{data.title}}</span>
-    <span>{{data.duration | timeFormat}}</span>
+    <span>{{data.duration | timeFormat: 'hh:mm:ss'}}</span>
 </div>

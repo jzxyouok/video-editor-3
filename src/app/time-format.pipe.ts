@@ -17,7 +17,7 @@ export class TimeFormatPipe implements PipeTransform {
     }
 
     transform(time: number, format: string): any {
-        if (format.toLocaleLowerCase() === 'hh:mm:ss') {
+        if (format.toLowerCase() === 'hh:mm:ss') {
             return this.formatTime(time, ':');
         } else if (format.toLocaleLowerCase() === 'hh/mm/ss') {
             return this.formatTime(time, '/');

@@ -11,16 +11,16 @@ export class PanelDataService {
                 "id": 1,
                 "title": "苍蝇一分钟的生命",
                 "extension": "mp4",
-                "url": "source/videos/cangying-1min.mp4",
-                "preview": "source/videos/cangying.jpg",
+                "url": "../source/videos/cangying-1min.mp4",
+                "preview": "../source/videos/cangying.jpg",
                 "duration": 348
             },
             {
                 "id": 2,
                 "title": "荷花",
                 "extension": "mp4",
-                "url": "source/videos/ty.mp4",
-                "preview": "source/videos/lotus.jpg",
+                "url": "../source/videos/ty.mp4",
+                "preview": "../source/videos/lotus.jpg",
                 "duration": 169
             }
         ];
@@ -32,15 +32,15 @@ export class PanelDataService {
                 "id": 1,
                 "title": "菊花",
                 "extension": "jpg",
-                "url": "source/images/Chrysanthemum.jpg",
-                "preview": "source/images/p-Chrysanthemum.jpg"
+                "url": "../source/images/Chrysanthemum.jpg",
+                "preview": "../source/images/p-Chrysanthemum.jpg"
             },
             {
                 "id": 2,
                 "title": "沙漠",
                 "extension": "jpg",
-                "url": "source/images/Desert.jpg",
-                "preview": "source/images/p-Desert.jpg"
+                "url": "../source/images/Desert.jpg",
+                "preview": "../source/images/p-Desert.jpg"
             },
             {
                 "id": 3,
