@@ -12,6 +12,9 @@ import { DragMoveItemComponent } from './drag-move-item/drag-move-item.component
 import { TimeFormatPipe } from './time-format.pipe';
 
 import { PanelDataService } from './panel-data.service';
+import { DynamicImageDirective } from './dynamic-image.directive';
+
+import { CoordsService } from './coords.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +23,18 @@ import { PanelDataService } from './panel-data.service';
     TrackComponent,
     DragItemComponent,
     DragMoveItemComponent,
-    TimeFormatPipe
+    TimeFormatPipe,
+    DynamicImageDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [PanelDataService],
+  providers: [
+      PanelDataService,
+      CoordsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

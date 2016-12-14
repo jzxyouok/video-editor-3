@@ -1,5 +1,4 @@
 <div *ngIf="type==='video'"
-    (mouseover)="mouseover()"
     (mousedown)="mousedown()"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"
@@ -9,7 +8,6 @@
     <p class="time">{{data.duration | timeFormat: 'hh:mm:ss'}}</p>
 </div>
 <div *ngIf="type==='image'"
-    (mouseover)="mouseover()"
     (mousedown)="mousedown()"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"
@@ -19,7 +17,6 @@
 </div>
 <div class="audio-item"
     *ngIf="type==='audio'"
-    (mouseover)="mouseover()"
     (mousedown)="mousedown()"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"

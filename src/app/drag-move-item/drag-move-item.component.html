@@ -1,3 +1,32 @@
-<p>
-  drag-move-item works!
-</p>
+<div *ngIf="type==='video'"
+    (mouseover)="mouseover()"
+    (mousedown)="mousedown()"
+    (mousemove)="mousemove($event)"
+    (mouseleave)="mouseleave()"
+    (mouseup)="mouseup()">
+    <img src="{{data.preview}}">
+    <p class="title">{{data.title}}</p>
+    <p class="time">{{data.duration | timeFormat: 'hh:mm:ss'}}</p>
+</div>
+<div *ngIf="type==='image'"
+    (mouseover)="mouseover()"
+    (mousedown)="mousedown()"
+    (mousemove)="mousemove($event)"
+    (mouseleave)="mouseleave()"
+    (mouseup)="mouseup()">
+    <img src="{{data.preview}}">
+    <p class="title">{{data.title}}</p>
+</div>
+<div class="audio-item"
+    *ngIf="type==='audio'"
+    (mouseover)="mouseover()"
+    (mousedown)="mousedown()"
+    (mousemove)="mousemove($event)"
+    (mouseleave)="mouseleave()"
+    (mouseup)="mouseup()">
+    <svg width="14" height="14">
+        <use xlink:href="#play-audio"></use>
+    </svg>
+    <span>{{data.title}}</span>
+    <span>{{data.duration | timeFormat: 'hh:mm:ss'}}</span>
+</div>

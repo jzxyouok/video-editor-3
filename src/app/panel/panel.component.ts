@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 import { PanelDataService } from '../panel-data.service';
 
@@ -16,6 +16,7 @@ export class PanelComponent implements OnInit {
         console.log(ds);
         this.tabIndex = 1;
         this.list = ds.getVideoList();
+        this.dataService = ds;
     }
 
     private getDataByIndex(index: number) {
@@ -40,5 +41,4 @@ export class PanelComponent implements OnInit {
     }
 
     ngOnInit() {}
-
 }
