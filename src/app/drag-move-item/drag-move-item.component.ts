@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-drag-move-item',
@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./drag-move-item.component.css']
 })
 export class DragMoveItemComponent implements OnInit {
+    @Input() transfer;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+    ngOnInit() {
+        // this.data = this.transfer;
+    }
 
 }

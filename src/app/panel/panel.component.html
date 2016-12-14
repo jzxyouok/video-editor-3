@@ -30,35 +30,46 @@
     <section *ngIf="tabIndex === 1">
         <app-drag-item
             *ngFor="let item of list"
-            [data]="item" [type]="'video'">
+            [data]="item"
+            [type]="'video'"
+            (dragTransfer)="dragTransfer($event)">
         </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 2">
         <app-drag-item
             *ngFor="let item of list"
-            [data]="item" [type]="'image'">
+            [data]="item"
+            [type]="'image'"
+            (dragTransfer)="dragTransfer($event)">
         </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 3">
         <app-drag-item
             *ngFor="let item of list"
-            [data]="item" [type]="'audio'">
+            [data]="item"
+            [type]="'audio'"
+            (dragTransfer)="dragTransfer($event)">
         </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 4">
         <app-drag-item
             *ngFor="let item of list"
-            [data]="item" [type]="'transition'">
+            [data]="item"
+            [type]="'transition'"
+            (dragTransfer)="dragTransfer($event)">
         </app-drag-item>
     </section>
 
     <section *ngIf="tabIndex === 5">
         <app-drag-item
             *ngFor="let item of list"
-            [data]="item" [type]="'text'">
+            [data]="item"
+            [type]="'text'"
+            (dragTransfer)="dragTransfer($event)">
         </app-drag-item>
     </section>
 </div>
+<app-drag-move-item [transfer]="transfer" *ngIf="transfer.isActive"></app-drag-move-item>

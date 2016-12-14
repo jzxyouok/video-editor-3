@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
 import { CoordsService } from '../coords.service';
 
 @Component({
@@ -11,7 +11,6 @@ export class DragItemComponent implements OnInit {
     @Input() type: string;
 
     isMouseDown: boolean = false;
-    isMoveActive: boolean = false;
     coordService: CoordsService;
     el: ElementRef;
 
@@ -27,21 +26,24 @@ export class DragItemComponent implements OnInit {
     }
 
     mousemove(event) {
-        this.coord = this.coordService.getMouseCoords(event);
-        this.dragType = this.type;
-        this.dragData = this.data;
-        this.isMoveActive = true;
+        event.preventDefault();
+        if (this.isMouseDown) {
+            this.dragTransfer.emit({
+                coord: this.coordService.getMouseCoords(event),
+                dragType: this.type,
+                dragData: this.data,
+                isActive: true
+            });
+        }
     }
 
     mouseleave() {
-
+        this.isMouseDown = false;
     }
 
     mouseup() {
-
+        this.isMouseDown = false;
     }
 
-    @Output() dragData;
-    @Output() dragType;
-    @Output() coord;
+    @Output() dragTransfer = new EventEmitter();
 }

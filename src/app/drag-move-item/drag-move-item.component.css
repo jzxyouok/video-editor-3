@@ -1,0 +1,60 @@
+div {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    height: 70px;
+    margin: 0 10px 10px 0;
+    overflow: hidden;
+    z-index: 99999;
+}
+div:nth-of-type(4n) {
+    margin-right: 0;
+}
+.title {
+    position: relative;
+    margin: 0;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+}
+.time {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
+    padding: 0 6px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 2px;
+    background: #000;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+div img {
+    position: absolute;
+    width: 100%;
+}
+
+.audio-item {
+    width: 100%;
+    height: 20px;
+    margin: 0 0 10px 0;
+    padding: 3px 10px;
+    font-size: 14px;
+    color: #666;
+}
+.audio-item:hover {
+    cursor: move;
+    box-shadow: 0 0 3px #aaa;
+}
+.audio-item svg,
+.audio-item span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.audio-item span:nth-of-type(2) {
+    float: right;
+}

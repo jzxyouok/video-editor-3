@@ -1,24 +1,24 @@
-<div *ngIf="type==='video'"
+<div *ngIf="transfer.dragType==='video'"
     (mouseover)="mouseover()"
     (mousedown)="mousedown()"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"
     (mouseup)="mouseup()">
-    <img src="{{data.preview}}">
-    <p class="title">{{data.title}}</p>
-    <p class="time">{{data.duration | timeFormat: 'hh:mm:ss'}}</p>
+    <img src="{{transfer.dragData.preview}}">
+    <p class="title">{{transfer.dragData.title}}</p>
+    <p class="time">{{transfer.dragData.duration | timeFormat: 'hh:mm:ss'}}</p>
 </div>
-<div *ngIf="type==='image'"
+<div *ngIf="transfer.dragType==='image'"
     (mouseover)="mouseover()"
     (mousedown)="mousedown()"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"
     (mouseup)="mouseup()">
-    <img src="{{data.preview}}">
-    <p class="title">{{data.title}}</p>
+    <img src="{{transfer.dragData.preview}}">
+    <p class="title">{{transfer.dragData.title}}</p>
 </div>
 <div class="audio-item"
-    *ngIf="type==='audio'"
+    *ngIf="transfer.dragType==='audio'"
     (mouseover)="mouseover()"
     (mousedown)="mousedown()"
     (mousemove)="mousemove($event)"
@@ -27,6 +27,6 @@
     <svg width="14" height="14">
         <use xlink:href="#play-audio"></use>
     </svg>
-    <span>{{data.title}}</span>
-    <span>{{data.duration | timeFormat: 'hh:mm:ss'}}</span>
+    <span>{{transfer.dragData.title}}</span>
+    <span>{{transfer.dragData.duration | timeFormat: 'hh:mm:ss'}}</span>
 </div>

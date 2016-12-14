@@ -11,12 +11,20 @@ export class PanelComponent implements OnInit {
     tabIndex: number;
     list = [];
     dataService: PanelDataService;
-
+    transfer: {};
+    dragTransfer(transfer) {
+        this.transfer = transfer;
+    }
     constructor(ds: PanelDataService) {
         console.log(ds);
         this.tabIndex = 1;
         this.list = ds.getVideoList();
         this.dataService = ds;
+        this.transfer = {
+            dragData: {},
+            dragType: '',
+            isActive: false
+        };
     }
 
     private getDataByIndex(index: number) {
