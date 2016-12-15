@@ -10,8 +10,8 @@ export class CoordsService {
     }
     getElementCoords(elem) {
         return {
-            ex: elem.offsetLeft,
-            ey: elem.offsetTop
+            ex: elem.clientWidth,
+            ey: elem.clientHeight
         }
     }
 }

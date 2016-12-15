@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { PlayerComponent } from './player/player.component';
-import { PanelComponent } from './panel/panel.component';
-import { TrackComponent } from './track/track.component';
-import { DragItemComponent } from './drag-item/drag-item.component';
-import { DragMoveItemComponent } from './drag-move-item/drag-move-item.component';
-import { TimeFormatPipe } from './time-format.pipe';
+import { PlayerComponent } from './components/player/player.component';
+import { PanelComponent } from './components/panel/panel.component';
+import { TrackComponent } from './components/track/track.component';
+import { DragItemComponent } from './components/drag-item/drag-item.component';
+import { DragMoveItemComponent } from './components/drag-move-item/drag-move-item.component';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 
-import { PanelDataService } from './panel-data.service';
-import { DynamicImageDirective } from './dynamic-image.directive';
+import { PanelDataService } from './services/panel-data.service';
+import { DynamicImageDirective } from './directives/dynamic-image.directive';
 
-import { CoordsService } from './coords.service';
+import { CoordsService } from './services/coords.service';
 @NgModule({
   declarations: [
     AppComponent,

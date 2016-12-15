@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 
-import { PanelDataService } from '../panel-data.service';
+import { PanelDataService } from '../../services/panel-data.service';
 
 @Component({
     selector: 'app-panel',

@@ -8,6 +8,7 @@ div {
     margin: 0 10px 10px 0;
     overflow: hidden;
     z-index: 99999;
+    cursor: pointer;
 }
 div:nth-of-type(4n) {
     margin-right: 0;
