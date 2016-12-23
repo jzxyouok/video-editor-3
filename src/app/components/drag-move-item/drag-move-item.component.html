@@ -1,5 +1,5 @@
 <div *ngIf="transfer.dragType==='video'"
-    (mouseover)="mouseover()"
+    (mouseover)="mouseover($event)"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"
     (mouseup)="mouseup()"
@@ -10,7 +10,7 @@
     <p class="time">{{transfer.dragData.duration | timeFormat: 'hh:mm:ss'}}</p>
 </div>
 <div *ngIf="transfer.dragType==='image'"
-    (mouseover)="mouseover()"
+    (mouseover)="mouseover($event)"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"
     (mouseup)="mouseup()"
@@ -21,12 +21,13 @@
 </div>
 <div class="audio-item"
     *ngIf="transfer.dragType==='audio'"
-    (mouseover)="mouseover()"
+    (mouseover)="mouseover($event)"
     (mousemove)="mousemove($event)"
     (mouseleave)="mouseleave()"
     (mouseup)="mouseup()"
     [style.left]="left"
-    [style.top]="top">
+    [style.top]="top"
+    [style.width]="width">
     <svg width="14" height="14">
         <use xlink:href="#play-audio"></use>
     </svg>

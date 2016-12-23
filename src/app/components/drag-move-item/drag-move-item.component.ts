@@ -16,6 +16,7 @@ export class DragMoveItemComponent implements OnInit {
     left: string = '0px';
     top: string = '0px';
     isDrop: boolean;
+    width: string;
 
     constructor(coordsService: CoordsService) {
         this.coordsService = coordsService;
@@ -35,9 +36,13 @@ export class DragMoveItemComponent implements OnInit {
         var mc = this.transfer.mouseCoords,
             size = this.transfer.size;
         this.setDragMoveItemPosition(mc, size);
+        if (this.transfer.dragType === 'audio') {
+            this.width = this.transfer.size.ex + 'px';
+        }
     }
 
-    mouseover() {
+    mouseover(event) {
+        event.preventDefault();
         this.dragItemMoving.emit(true);
     }
     mousemove(event) {
